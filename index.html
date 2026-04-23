@@ -1,1171 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mrs. Evergreen – Women's Exclusive Fashion</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --forest: #1a3a2a;
-    --deep: #0d2118;
-    --sage: #4a7c5f;
-    --mint: #a8c5b0;
-    --gold: #c9a84c;
-    --gold-light: #e8c96e;
-    --cream: #f7f2ea;
-    --blush: #f0e0d0;
-    --white: #fefcf8;
-    --text-dark: #1a2620;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
-
-  /* ── HEADER ── */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(13, 33, 24, 0.96);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201,168,76,.25);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 70px;
-  }
-
-  .logo {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
-  .logo-mrs {
-    font-family: 'Jost', sans-serif;
-    font-weight: 200;
-    font-size: .75rem;
-    letter-spacing: .35em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-  .logo-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 1.7rem;
-    color: var(--cream);
-    letter-spacing: .08em;
-  }
-
-  nav { display: flex; gap: 2rem; align-items: center; }
-  nav a {
-    font-size: .75rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--mint);
-    text-decoration: none;
-    transition: color .3s;
-  }
-  nav a:hover { color: var(--gold-light); }
-
-  .header-cta {
-    background: var(--gold);
-    color: var(--deep) !important;
-    padding: .45rem 1.2rem;
-    border-radius: 2px;
-    font-weight: 500 !important;
-    transition: background .3s !important;
-  }
-  .header-cta:hover { background: var(--gold-light) !important; color: var(--deep) !important; }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--deep);
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-  }
-
-  /* animated gradient orbs */
-  .hero-orb {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(80px);
-    opacity: .18;
-  }
-  .hero-orb.o1 {
-    width: 500px; height: 500px;
-    background: var(--sage);
-    top: -100px; left: -100px;
-    animation: orbFloat 9s ease-in-out infinite;
-  }
-  .hero-orb.o2 {
-    width: 350px; height: 350px;
-    background: var(--gold);
-    bottom: 0; right: 40%;
-    animation: orbFloat 12s ease-in-out infinite reverse;
-    opacity: .1;
-  }
-  .hero-orb.o3 {
-    width: 280px; height: 280px;
-    background: #c44569;
-    top: 30%; left: 30%;
-    animation: orbFloat 7s ease-in-out infinite 2s;
-    opacity: .08;
-  }
-  @keyframes orbFloat {
-    0%,100% { transform: translate(0,0) scale(1); }
-    33% { transform: translate(40px,-30px) scale(1.05); }
-    66% { transform: translate(-20px,20px) scale(.95); }
-  }
-
-  /* decorative botanical SVG lines */
-  .hero-vine {
-    position: absolute;
-    opacity: .07;
-    pointer-events: none;
-  }
-  .hero-vine.v1 { top: 0; left: 0; width: 320px; }
-  .hero-vine.v2 { bottom: 0; right: 0; width: 280px; transform: rotate(180deg); }
-
-  /* left text pane */
-  .hero-left {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 3.5rem 4rem 5rem;
-  }
-
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    margin-bottom: 1.8rem;
-    animation: slideIn .8s ease both;
-  }
-  .hero-eyebrow-line {
-    width: 36px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .hero-eyebrow-text {
-    font-size: .65rem;
-    letter-spacing: .5em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    line-height: 1.0;
-    margin-bottom: 1.5rem;
-    animation: slideIn .9s ease .1s both;
-  }
-  .hero-title .line1 {
-    display: block;
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    color: var(--cream);
-    letter-spacing: .03em;
-  }
-  .hero-title .line2 {
-    display: block;
-    font-size: clamp(4rem, 7.5vw, 8rem);
-    font-style: italic;
-    color: var(--gold-light);
-    letter-spacing: -.01em;
-    line-height: .95;
-  }
-  .hero-title .line3 {
-    display: block;
-    font-size: clamp(2rem, 3.5vw, 3.5rem);
-    color: rgba(247,242,234,.55);
-    letter-spacing: .12em;
-    margin-top: .2rem;
-  }
-
-  .hero-desc {
-    font-size: .9rem;
-    color: var(--mint);
-    line-height: 1.8;
-    font-weight: 300;
-    max-width: 380px;
-    margin-bottom: 2.5rem;
-    animation: slideIn 1s ease .2s both;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    animation: slideIn 1s ease .3s both;
-  }
-  .hero-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    color: var(--cream);
-    font-weight: 400;
-    line-height: 1;
-    display: block;
-  }
-  .hero-stat-num span { color: var(--gold); font-size: 1.2rem; }
-  .hero-stat-label {
-    font-size: .65rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: rgba(168,197,176,.6);
-    display: block;
-    margin-top: .25rem;
-  }
-  .hero-stat-divider {
-    width: 1px;
-    background: rgba(168,197,176,.15);
-    align-self: stretch;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    animation: slideIn 1s ease .4s both;
-  }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-24px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: var(--deep);
-    padding: .9rem 2.4rem;
-    font-family: 'Jost', sans-serif;
-    font-size: .75rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    font-weight: 500;
-    transition: all .3s;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-  }
-  .btn-primary::after { content: '→'; transition: transform .3s; }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-primary:hover::after { transform: translateX(4px); }
-
-  .btn-outline {
-    border: 1px solid rgba(168,197,176,.3);
-    color: var(--mint);
-    padding: .9rem 2.4rem;
-    font-family: 'Jost', sans-serif;
-    font-size: .75rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: all .3s;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
-
-  /* right image collage pane */
-  .hero-right {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8rem 3rem 4rem;
-    animation: fadeRight 1s ease .2s both;
-  }
-  @keyframes fadeRight {
-    from { opacity: 0; transform: translateX(30px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-  .hero-collage {
-    position: relative;
-    width: 100%;
-    max-width: 440px;
-    aspect-ratio: 1;
-  }
-
-  /* large main image */
-  .hc-main {
-    position: absolute;
-    top: 0; left: 5%;
-    width: 62%;
-    aspect-ratio: 3/4;
-    border-radius: 120px 8px 8px 8px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,.5);
-    border: 1px solid rgba(201,168,76,.2);
-  }
-  .hc-main img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-
-  /* secondary image */
-  .hc-secondary {
-    position: absolute;
-    bottom: 0; right: 0;
-    width: 52%;
-    aspect-ratio: 3/4;
-    border-radius: 8px 8px 80px 8px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    border: 1px solid rgba(201,168,76,.15);
-    animation: floatImg 6s ease-in-out infinite;
-  }
-  .hc-secondary img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-
-  @keyframes floatImg {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  /* small accent card */
-  .hc-accent {
-    position: absolute;
-    top: 42%; right: 3%;
-    width: 44%;
-    aspect-ratio: 1;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0,0,0,.45);
-    border: 2px solid rgba(201,168,76,.3);
-    animation: floatImg 8s ease-in-out infinite 1s;
-  }
-  .hc-accent img { width: 100%; height: 100%; object-fit: cover; }
-
-  /* floating label badge */
-  .hc-badge {
-    position: absolute;
-    bottom: 38%; left: -8%;
-    background: var(--gold);
-    color: var(--deep);
-    padding: .9rem 1.2rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    animation: floatImg 7s ease-in-out infinite .5s;
-    z-index: 5;
-  }
-  .hc-badge-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    line-height: 1;
-    display: block;
-  }
-  .hc-badge-text {
-    font-size: .6rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    opacity: .8;
-  }
-
-  /* gold ring deco */
-  .hc-ring {
-    position: absolute;
-    top: -20px; right: -20px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(201,168,76,.3);
-    pointer-events: none;
-  }
-  .hc-ring::before {
-    content: '';
-    position: absolute;
-    inset: 12px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,168,76,.15);
-  }
-
-  /* scroll indicator */
-  .hero-scroll {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 5rem;
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-    z-index: 3;
-  }
-  .hero-scroll-line {
-    width: 40px;
-    height: 1px;
-    background: rgba(168,197,176,.4);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-scroll-line::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: var(--gold);
-    animation: scrollLine 2.5s ease-in-out infinite;
-  }
-  @keyframes scrollLine {
-    0% { left: -100%; }
-    50%,100% { left: 100%; }
-  }
-  .hero-scroll-text {
-    font-size: .6rem;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: rgba(168,197,176,.4);
-  }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 8rem 2rem 4rem; align-items: center; text-align: center; }
-    .hero-desc { max-width: 100%; }
-    .hero-btns { justify-content: center; }
-    .hero-eyebrow { justify-content: center; }
-    .hero-stats { justify-content: center; }
-    .hero-scroll { left: 50%; transform: translateX(-50%); }
-  }
-
-  /* ── MARQUEE ── */
-  .marquee-wrap {
-    background: var(--gold);
-    padding: .6rem 0;
-    overflow: hidden;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 3rem;
-    animation: marquee 22s linear infinite;
-    white-space: nowrap;
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  .marquee-track span {
-    font-size: .7rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--deep);
-    font-weight: 500;
-    flex-shrink: 0;
-  }
-
-  /* ── SECTION TITLES ── */
-  .section-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  .section-tag {
-    font-size: .65rem;
-    letter-spacing: .5em;
-    text-transform: uppercase;
-    color: var(--sage);
-    display: block;
-    margin-bottom: .6rem;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 400;
-    color: var(--forest);
-    line-height: 1.2;
-  }
-  .section-title em { font-style: italic; color: var(--sage); }
-  .section-divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 1rem auto 0;
-  }
-
-  /* ── CATEGORIES ── */
-  .categories { padding: 6rem 3rem; background: var(--white); }
-
-  .cat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .cat-card {
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
-    group: true;
-    text-decoration: none;
-    display: block;
-  }
-
-  .cat-card .card-bg {
-    height: 280px;
-    position: relative;
-    overflow: hidden;
-    transition: transform .5s ease;
-  }
-  .cat-card:hover .card-bg { transform: scale(1.04); }
-
-  .card-pattern {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-size: cover;
-    background-position: center top;
-  }
-
-  .card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(10,20,15,.85) 0%, rgba(10,20,15,.1) 60%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-  }
-
-  .card-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--cream);
-    letter-spacing: .04em;
-    margin-bottom: .3rem;
-  }
-  .card-sub {
-    font-size: .65rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all .35s;
-  }
-  .cat-card:hover .card-sub { opacity: 1; transform: translateY(0); }
-
-  /* ── FEATURED BANNER ── */
-  .featured {
-    background: var(--forest);
-    padding: 5rem 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .featured::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 100% at 100% 50%, rgba(201,168,76,.07) 0%, transparent 70%);
-  }
-  .featured-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .featured-text { position: relative; }
-  .featured-text .section-tag { color: var(--gold); text-align: left; }
-  .featured-text h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    color: var(--cream);
-    font-weight: 300;
-    line-height: 1.25;
-    margin-bottom: 1.2rem;
-  }
-  .featured-text h2 em { font-style: italic; color: var(--gold-light); }
-  .featured-text p {
-    color: var(--mint);
-    font-size: .9rem;
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-
-  .features-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-  }
-  .features-list li {
-    font-size: .8rem;
-    color: var(--cream);
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    letter-spacing: .05em;
-  }
-  .features-list li::before {
-    content: '✦';
-    color: var(--gold);
-    font-size: .6rem;
-  }
-
-  .featured-visual {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: .8rem;
-  }
-  .fv-box {
-    border-radius: 4px;
-    overflow: hidden;
-    aspect-ratio: 3/4;
-  }
-  .fv-box:nth-child(1) { background: linear-gradient(160deg, #4a1942 0%, #9b4d9b 100%); margin-top: 2rem; }
-  .fv-box:nth-child(2) { background: linear-gradient(160deg, #1a4a3a 0%, #4a9b7a 100%); }
-  .fv-box:nth-child(3) { background: linear-gradient(160deg, #4a3a1a 0%, #c99a4a 100%); }
-  .fv-box:nth-child(4) { background: linear-gradient(160deg, #1a2a4a 0%, #4a6a9b 100%); margin-top: -2rem; }
-
-  .fv-inner {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    opacity: .4;
-  }
-
-  /* ── JEWELLERY SPOTLIGHT ── */
-  .jewellery { padding: 6rem 3rem; background: var(--cream); }
-  .jewellery .section-header { margin-bottom: 3.5rem; }
-  .jewellery .section-title { color: var(--forest); }
-
-  .jewel-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 1100px;
-    margin: 0 auto 3rem;
-  }
-  .jewel-card {
-    background: var(--white);
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid rgba(201,168,76,.2);
-    transition: transform .35s, box-shadow .35s;
-    text-decoration: none;
-    display: block;
-  }
-  .jewel-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,58,42,.12); }
-  .jewel-img {
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    opacity: .5;
-  }
-  .jewel-card:nth-child(1) .jewel-img { background: linear-gradient(135deg, #3d2a1a, #c99a4a); }
-  .jewel-card:nth-child(2) .jewel-img { background: linear-gradient(135deg, #1a1a3d, #6b2d9a); }
-  .jewel-card:nth-child(3) .jewel-img { background: linear-gradient(135deg, #1a3d2a, #4a9b6b); }
-  .jewel-info { padding: 1.2rem; }
-  .jewel-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    color: var(--forest);
-    margin-bottom: .2rem;
-  }
-  .jewel-desc {
-    font-size: .75rem;
-    color: var(--sage);
-    letter-spacing: .08em;
-  }
-
-  /* ── CONTACT ── */
-  .contact {
-    background: var(--deep);
-    padding: 5rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(74,124,95,.12) 0%, transparent 70%);
-  }
-  .contact-inner { position: relative; max-width: 700px; margin: 0 auto; }
-  .contact h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--cream);
-    font-weight: 300;
-    margin-bottom: 1rem;
-  }
-  .contact h2 em { font-style: italic; color: var(--gold-light); }
-  .contact p {
-    color: var(--mint);
-    font-size: .9rem;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .contact-cards {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-  }
-
-  .contact-card {
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(201,168,76,.2);
-    border-radius: 6px;
-    padding: 1.5rem 2rem;
-    min-width: 200px;
-    text-decoration: none;
-    transition: all .3s;
-  }
-  .contact-card:hover {
-    background: rgba(201,168,76,.1);
-    border-color: var(--gold);
-    transform: translateY(-4px);
-  }
-  .contact-card .cc-icon { font-size: 1.8rem; margin-bottom: .6rem; }
-  .contact-card .cc-label {
-    font-size: .65rem;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: .3rem;
-    display: block;
-  }
-  .contact-card .cc-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: var(--cream);
-    font-weight: 400;
-  }
-
-  .whatsapp-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: .7rem;
-    background: #25D366;
-    color: #fff;
-    padding: 1rem 2.5rem;
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: .85rem;
-    font-weight: 500;
-    letter-spacing: .1em;
-    transition: all .3s;
-    font-family: 'Jost', sans-serif;
-  }
-  .whatsapp-btn:hover { background: #1ebe5a; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,211,102,.35); }
-  .whatsapp-btn svg { width: 22px; height: 22px; fill: #fff; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #060f0a;
-    padding: 2rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    border-top: 1px solid rgba(201,168,76,.12);
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    color: var(--cream);
-    letter-spacing: .1em;
-  }
-  .footer-logo span { color: var(--gold); font-size: .7rem; font-family: 'Jost', sans-serif; letter-spacing: .3em; display: block; text-transform: uppercase; font-weight: 200; }
-  .footer-copy {
-    font-size: .7rem;
-    color: rgba(168,197,176,.4);
-    letter-spacing: .1em;
-  }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a {
-    font-size: .7rem;
-    color: rgba(168,197,176,.5);
-    text-decoration: none;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    transition: color .3s;
-  }
-  .footer-links a:hover { color: var(--gold); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    header { padding: 0 1.5rem; }
-    nav { display: none; }
-    .categories { padding: 4rem 1.5rem; }
-    .cat-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .cat-card .card-bg { height: 200px; }
-    .featured-inner { grid-template-columns: 1fr; }
-    .featured-visual { display: none; }
-    .jewel-grid { grid-template-columns: 1fr; }
-    .contact { padding: 4rem 1.5rem; }
-    footer { flex-direction: column; text-align: center; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mrs. Evergreen – Women's Exclusive Fashion Boutique</title>
+  <meta name="description" content="Mrs. Evergreen – Your premier destination for sarees, kurtis, chudidars, cord sets, western wear, exclusive collections & imitation jewellery. Contact: 9840580550" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ── HEADER ── -->
-<header>
-  <div class="logo">
-    <span class="logo-mrs">Mrs.</span>
-    <span class="logo-name">Evergreen</span>
-  </div>
-  <nav>
-    <a href="#categories">Collections</a>
-    <a href="#featured">Featured</a>
-    <a href="#jewellery">Jewellery</a>
-    <a href="#contact" class="header-cta">Contact Us</a>
-  </nav>
-</header>
-
-<!-- ── HERO ── -->
-<section class="hero" id="home">
-
-  <!-- ambient orbs -->
-  <div class="hero-orb o1"></div>
-  <div class="hero-orb o2"></div>
-  <div class="hero-orb o3"></div>
-
-  <!-- botanical SVG vines -->
-  <svg class="hero-vine v1" viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 400 C20 300 80 280 60 200 C40 120 100 80 80 20" stroke="#a8c5b0" stroke-width="1.5" fill="none"/>
-    <ellipse cx="65" cy="185" rx="28" ry="18" transform="rotate(-30 65 185)" stroke="#a8c5b0" stroke-width="1"/>
-    <ellipse cx="50" cy="130" rx="22" ry="14" transform="rotate(25 50 130)" stroke="#a8c5b0" stroke-width="1"/>
-    <ellipse cx="78" cy="80" rx="20" ry="13" transform="rotate(-40 78 80)" stroke="#a8c5b0" stroke-width="1"/>
-    <ellipse cx="45" cy="240" rx="25" ry="16" transform="rotate(15 45 240)" stroke="#a8c5b0" stroke-width="1"/>
-    <ellipse cx="72" cy="290" rx="18" ry="12" transform="rotate(-20 72 290)" stroke="#a8c5b0" stroke-width="1"/>
-  </svg>
-  <svg class="hero-vine v2" viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M260 380 C260 280 200 260 220 180 C240 100 180 60 200 0" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-    <ellipse cx="215" cy="165" rx="26" ry="16" transform="rotate(30 215 165)" stroke="#c9a84c" stroke-width="1"/>
-    <ellipse cx="228" cy="110" rx="20" ry="13" transform="rotate(-25 228 110)" stroke="#c9a84c" stroke-width="1"/>
-    <ellipse cx="195" cy="60" rx="18" ry="11" transform="rotate(40 195 60)" stroke="#c9a84c" stroke-width="1"/>
-  </svg>
-
-  <!-- LEFT: text content -->
-  <div class="hero-left">
-    <div class="hero-eyebrow">
-      <span class="hero-eyebrow-line"></span>
-      <span class="hero-eyebrow-text">Women's Exclusive Fashion · Chennai</span>
-    </div>
-
-    <h1 class="hero-title">
-      <span class="line1">Welcome to</span>
-      <span class="line2">Evergreen</span>
-      <span class="line3">by Mrs. Evergreen</span>
-    </h1>
-
-    <p class="hero-desc">
-      Where timeless Indian elegance meets contemporary grace. Discover curated sarees, kurtis, western wear & stunning imitation jewellery — all handpicked for the modern woman.
-    </p>
-
-    <div class="hero-stats">
-      <div>
-        <span class="hero-stat-num">500<span>+</span></span>
-        <span class="hero-stat-label">Styles Available</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div>
-        <span class="hero-stat-num">7<span>+</span></span>
-        <span class="hero-stat-label">Categories</span>
-      </div>
-      <div class="hero-stat-divider"></div>
-      <div>
-        <span class="hero-stat-num">100<span>%</span></span>
-        <span class="hero-stat-label">Exclusive Picks</span>
-      </div>
-    </div>
-
-    <div class="hero-btns">
-      <a href="#categories" class="btn-primary">Shop Collections</a>
-      <a href="#contact" class="btn-outline">WhatsApp Us</a>
-    </div>
+  <!-- ── ANNOUNCEMENT BAR ── -->
+  <div class="announcement-bar">
+    <marquee behavior="scroll" direction="left">✨ New Arrivals Every Week &nbsp;|&nbsp; 🌿 Exclusive Women's Collections &nbsp;|&nbsp; 💬 WhatsApp Us: 9840580550 &nbsp;|&nbsp; 🎁 Special Occasion Wear Available &nbsp;|&nbsp; ✨ Free Consultation on Styling</marquee>
   </div>
 
-  <!-- RIGHT: image collage -->
-  <div class="hero-right">
-    <div class="hero-collage">
-      <div class="hc-ring"></div>
-
-      <div class="hc-main">
-        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=85" alt="Saree Collection">
-      </div>
-
-      <div class="hc-secondary">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=85" alt="Fashion Collection">
-      </div>
-
-      <div class="hc-accent">
-        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=85" alt="Jewellery">
-      </div>
-
-      <div class="hc-badge">
-        <span class="hc-badge-num">New</span>
-        <span class="hc-badge-text">Arrivals</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- scroll hint -->
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <span class="hero-scroll-text">Scroll to Explore</span>
-  </div>
-
-</section>
-
-<!-- ── MARQUEE ── -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span>Sarees</span><span>✦</span>
-    <span>Kurtis</span><span>✦</span>
-    <span>Chudidars</span><span>✦</span>
-    <span>Cord Sets</span><span>✦</span>
-    <span>Western Wear</span><span>✦</span>
-    <span>Imitation Jewellery</span><span>✦</span>
-    <span>Exclusive Collections</span><span>✦</span>
-    <span>Sarees</span><span>✦</span>
-    <span>Kurtis</span><span>✦</span>
-    <span>Chudidars</span><span>✦</span>
-    <span>Cord Sets</span><span>✦</span>
-    <span>Western Wear</span><span>✦</span>
-    <span>Imitation Jewellery</span><span>✦</span>
-    <span>Exclusive Collections</span><span>✦</span>
-  </div>
-</div>
-
-<!-- ── CATEGORIES ── -->
-<section class="categories" id="categories">
-  <div class="section-header">
-    <span class="section-tag">Browse Our Collections</span>
-    <h2 class="section-title">Curated <em>Fashion</em> for Every Occasion</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="cat-grid">
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-image:url('https://i.pinimg.com/736x/2a/6b/cd/2a6bcd7a7b3ef1d3c8e9f4a2b1c5d8e7.jpg'); background-color:#7a2d5e;">
-          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&q=80" alt="Sarees" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Sarees</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#1a3a4a;">
-          <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&q=80" alt="Kurtis" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Kurtis</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#2d1b3d;">
-          <img src="https://images.unsplash.com/photo-1614251056798-0a63eda2bb25?w=500&q=80" alt="Chudidars" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Chudidars</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#3d1a2d;">
-          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=500&q=80" alt="Cord Sets" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Cord Sets</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#1a2d3d;">
-          <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=500&q=80" alt="Western Wear" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Western Wear</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#contact">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#1a3a2a;">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&q=80" alt="Women's Exclusive" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Women's Exclusive</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cat-card" href="#jewellery">
-      <div class="card-bg">
-        <div class="card-pattern" style="background-color:#3d2a1a;">
-          <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&q=80" alt="Imitation Jewellery" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-        </div>
-        <div class="card-overlay">
-          <span class="card-label">Imitation Jewellery</span>
-          <span class="card-sub">Explore Collection →</span>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ── FEATURED ── -->
-<section class="featured" id="featured">
-  <div class="featured-inner">
-    <div class="featured-text">
-      <span class="section-tag">Why Choose Us</span>
-      <h2>Fashion That <em>Celebrates</em> Every Woman</h2>
-      <p>At Mrs. Evergreen, we believe every woman deserves to feel extraordinary. Our curated collections blend timeless Indian traditions with contemporary elegance — from silk sarees that tell stories, to western silhouettes that speak confidence.</p>
-      <ul class="features-list">
-        <li>Premium Quality Fabrics</li>
-        <li>Latest Trends & Designs</li>
-        <li>Exclusive Collections</li>
-        <li>Affordable Luxury</li>
-        <li>Handpicked Styles</li>
-        <li>Personalised Service</li>
-        <li>Wide Size Range</li>
-        <li>Quick Delivery</li>
-      </ul>
-    </div>
-    <div class="featured-visual">
-      <div class="fv-box" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Saree" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
-      <div class="fv-box" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80" alt="Western" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
-      <div class="fv-box" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400&q=80" alt="Jewellery" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="fv-box" style="overflow:hidden;"><img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&q=80" alt="Kurti" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── JEWELLERY ── -->
-<section class="jewellery" id="jewellery">
-  <div class="section-header">
-    <span class="section-tag">Adornments</span>
-    <h2 class="section-title">Imitation <em>Jewellery</em></h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="jewel-grid">
-    <a class="jewel-card" href="#contact">
-      <div class="jewel-img" style="padding:0;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&q=80" alt="Necklace Sets" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="jewel-info">
-        <div class="jewel-name">Necklace Sets</div>
-        <div class="jewel-desc">Elegant layered & statement pieces</div>
-      </div>
-    </a>
-    <a class="jewel-card" href="#contact">
-      <div class="jewel-img" style="padding:0;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Bangles & Bracelets" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="jewel-info">
-        <div class="jewel-name">Bangles & Bracelets</div>
-        <div class="jewel-desc">Traditional & fusion styles</div>
-      </div>
-    </a>
-    <a class="jewel-card" href="#contact">
-      <div class="jewel-img" style="padding:0;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&q=80" alt="Earrings & Maang Tikka" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="jewel-info">
-        <div class="jewel-name">Earrings & Maang Tikka</div>
-        <div class="jewel-desc">Bridal & everyday collections</div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ── CONTACT ── -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <span class="section-tag" style="color:var(--gold);display:block;margin-bottom:.6rem;">Get In Touch</span>
-    <h2>Let's Find Your <em>Perfect Look</em></h2>
-    <p>Reach out to us for the latest arrivals, custom styling advice, and exclusive deals. We'd love to help you find the perfect outfit for every occasion.</p>
-
-    <div class="contact-cards">
-      <a class="contact-card" href="tel:+919840580550">
-        <div class="cc-icon">📞</div>
-        <span class="cc-label">Call Us</span>
-        <span class="cc-value">+91 98405 80550</span>
+  <!-- ── HEADER / NAV ── -->
+  <header class="header" id="top">
+    <div class="header-inner container">
+      <a href="#top" class="logo">
+        <span class="logo-leaf">🌿</span>
+        <span class="logo-text">Mrs.<strong>Evergreen</strong></span>
       </a>
-      <a class="contact-card" href="https://wa.me/919840580550" target="_blank">
-        <div class="cc-icon">💬</div>
-        <span class="cc-label">WhatsApp</span>
-        <span class="cc-value">+91 98405 80550</span>
-      </a>
+      <nav class="nav" id="mainNav">
+        <a href="#sarees" class="nav-link">Sarees</a>
+        <a href="#kurtis" class="nav-link">Kurtis</a>
+        <a href="#chudidars" class="nav-link">Chudidars</a>
+        <a href="#cordsets" class="nav-link">Cord Sets</a>
+        <a href="#western" class="nav-link">Western Wear</a>
+        <a href="#exclusive" class="nav-link">Exclusive</a>
+        <a href="#jewellery" class="nav-link">Jewellery</a>
+        <a href="#contact" class="nav-link nav-cta">Contact Us</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <a href="https://wa.me/919840580550?text=Hi%20Mrs.%20Evergreen!%20I'd%20like%20to%20know%20more%20about%20your%20collections." target="_blank" class="whatsapp-btn">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Chat on WhatsApp
-    </a>
-  </div>
-</section>
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <img src="hero_banner.png" alt="Mrs. Evergreen Fashion Collection" class="hero-bg" />
+    <div class="hero-content container">
+      <p class="hero-tag">Women's Exclusive Boutique</p>
+      <h1 class="hero-title">Elegance <em>Blooms</em><br/>Every Season</h1>
+      <p class="hero-sub">Curated sarees, ethnic wear, fusion fashion & statement jewellery — crafted for the modern Indian woman.</p>
+      <div class="hero-btns">
+        <a href="#collections" class="btn btn-primary">Shop Collections</a>
+        <a href="https://wa.me/919840580550" target="_blank" class="btn btn-whatsapp" id="heroWhatsapp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.886a.75.75 0 00.918.918l6.03-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.72 9.72 0 01-4.92-1.336l-.352-.21-3.656.895.915-3.546-.228-.366A9.72 9.72 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll to Explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-logo">
-    <span>Mrs.</span>
-    Evergreen
-  </div>
-  <div class="footer-links">
-    <a href="#categories">Collections</a>
-    <a href="#jewellery">Jewellery</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <p class="footer-copy">© 2025 Mrs. Evergreen. All Rights Reserved.</p>
-</footer>
+  <!-- ── COLLECTIONS GRID HEADER ── -->
+  <section class="section-intro" id="collections">
+    <div class="container text-center">
+      <p class="section-eyebrow">Our Collections</p>
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-desc">From timeless traditional wear to contemporary fusion — find your perfect style at Mrs. Evergreen.</p>
+    </div>
+  </section>
 
+  <!-- ── SAREES ── -->
+  <section class="category-section" id="sarees">
+    <div class="container cat-layout">
+      <div class="cat-image">
+        <img src="saree_collection.png" alt="Saree Collection" loading="lazy" />
+        <div class="cat-badge">New Arrivals</div>
+      </div>
+      <div class="cat-content">
+        <p class="cat-eyebrow">Traditional & Contemporary</p>
+        <h2 class="cat-title">Sarees</h2>
+        <p class="cat-desc">Discover our breathtaking range of silk sarees, cotton sarees, designer sarees, and festive drapes — each piece a work of art that celebrates the grace of every woman.</p>
+        <ul class="cat-features">
+          <li>🌸 Silk & Banarasi Sarees</li>
+          <li>🌿 Cotton & Linen Sarees</li>
+          <li>✨ Designer & Party Wear</li>
+          <li>🎉 Bridal & Festive Collections</li>
+        </ul>
+        <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Saree%20collection!" target="_blank" class="btn btn-primary" id="sareesWhatsapp">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── KURTIS ── -->
+  <section class="category-section alt-bg" id="kurtis">
+    <div class="container cat-layout reverse">
+      <div class="cat-image">
+        <img src="kurti_collection.png" alt="Kurti Collection" loading="lazy" />
+        <div class="cat-badge">Trending</div>
+      </div>
+      <div class="cat-content">
+        <p class="cat-eyebrow">Casual to Festive</p>
+        <h2 class="cat-title">Kurtis</h2>
+        <p class="cat-desc">Elevate your everyday wardrobe with our stunning kurti collection — from simple daily-wear to heavily embroidered festive pieces that make every moment special.</p>
+        <ul class="cat-features">
+          <li>👗 Daily Wear Kurtis</li>
+          <li>🌺 Printed & Embroidered</li>
+          <li>💎 Designer Kurti Sets</li>
+          <li>🎀 A-line & Straight Cut</li>
+        </ul>
+        <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Kurti%20collection!" target="_blank" class="btn btn-primary" id="kurtisWhatsapp">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CHUDIDARS ── -->
+  <section class="category-section" id="chudidars">
+    <div class="container cat-layout">
+      <div class="cat-image">
+        <img src="chudidar_collection.png" alt="Chudidar Collection" loading="lazy" />
+        <div class="cat-badge">Classic</div>
+      </div>
+      <div class="cat-content">
+        <p class="cat-eyebrow">Graceful & Elegant</p>
+        <h2 class="cat-title">Chudidars</h2>
+        <p class="cat-desc">Our chudidar collection blends timeless silhouettes with modern embellishments — perfect for every occasion from casual outings to grand celebrations.</p>
+        <ul class="cat-features">
+          <li>🌙 Embroidered Chudidars</li>
+          <li>🌸 Anarkali Style Sets</li>
+          <li>✨ Net & Georgette Varieties</li>
+          <li>🎊 Wedding & Party Wear</li>
+        </ul>
+        <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Chudidar%20collection!" target="_blank" class="btn btn-primary" id="chudidarsWhatsapp">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CORD SETS ── -->
+  <section class="category-section alt-bg" id="cordsets">
+    <div class="container cat-layout reverse">
+      <div class="cat-image">
+        <img src="coord_set_collection.png" alt="Coord Set Collection" loading="lazy" />
+        <div class="cat-badge">Must Have</div>
+      </div>
+      <div class="cat-content">
+        <p class="cat-eyebrow">Matching Perfection</p>
+        <h2 class="cat-title">Cord Sets</h2>
+        <p class="cat-desc">Step into effortless style with our curated cord set collection — perfectly matched two and three-piece sets that are made for the confident, fashion-forward woman.</p>
+        <ul class="cat-features">
+          <li>👚 2-Piece Matching Sets</li>
+          <li>🎽 3-Piece Fusion Sets</li>
+          <li>🌈 Vibrant Color Palettes</li>
+          <li>💫 Work-to-Weekend Styles</li>
+        </ul>
+        <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Cord%20Set%20collection!" target="_blank" class="btn btn-primary" id="cordWhatsapp">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WESTERN WEAR ── -->
+  <section class="category-section" id="western">
+    <div class="container cat-layout">
+      <div class="cat-image">
+        <img src="western_wear_collection.png" alt="Western Wear Collection" loading="lazy" />
+        <div class="cat-badge">Modern</div>
+      </div>
+      <div class="cat-content">
+        <p class="cat-eyebrow">Contemporary Chic</p>
+        <h2 class="cat-title">Western Wear</h2>
+        <p class="cat-desc">Embrace the modern side of your wardrobe with our vibrant western wear — chic dresses, stylish tops, trendy denims and blazers curated for the contemporary Indian woman.</p>
+        <ul class="cat-features">
+          <li>👗 Dresses & Jumpsuits</li>
+          <li>🧥 Blazers & Jackets</li>
+          <li>👚 Tops & Trousers</li>
+          <li>🌟 Party & Casual Wear</li>
+        </ul>
+        <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Western%20Wear%20collection!" target="_blank" class="btn btn-primary" id="westernWhatsapp">Enquire on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXCLUSIVE & JEWELLERY — Card Grid ── -->
+  <section class="section-grid-wrap" id="exclusive">
+    <div class="container">
+      <div class="text-center mb-lg">
+        <p class="section-eyebrow">Premium Selections</p>
+        <h2 class="section-title">Exclusive & Jewellery</h2>
+      </div>
+      <div class="grid-two">
+
+        <!-- Exclusive Fashion -->
+        <div class="feature-card" id="exclusiveCard">
+          <div class="feature-card-icon">👑</div>
+          <h3 class="feature-card-title">Women's Exclusive Fashion Collections</h3>
+          <p class="feature-card-desc">Our signature exclusive collections are handpicked for women who demand the finest. From limited-edition festive sets to premium designer collaborations — this is fashion at its peak.</p>
+          <ul class="feature-list">
+            <li>✦ Limited Edition Festive Sets</li>
+            <li>✦ Designer Collaborations</li>
+            <li>✦ Premium Fabrics & Finishes</li>
+            <li>✦ Custom Styling Available</li>
+          </ul>
+          <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Exclusive%20Fashion%20collections!" target="_blank" class="btn btn-outline" id="exclusiveWhatsapp">Ask About Exclusive Pieces</a>
+        </div>
+
+        <!-- Jewellery -->
+        <div class="feature-card jewellery-card" id="jewellery">
+          <div class="feature-card-icon">💎</div>
+          <h3 class="feature-card-title">Imitation Jewellery</h3>
+          <p class="feature-card-desc">Complete your look with our stunning range of imitation jewellery — statement necklaces, elegant earrings, designer bangles and more, all at affordable luxury prices.</p>
+          <ul class="feature-list">
+            <li>✦ Statement Necklace Sets</li>
+            <li>✦ Jhumkas & Chandbalis</li>
+            <li>✦ Designer Bangles & Bracelets</li>
+            <li>✦ Maang Tikka & Hair Accessories</li>
+          </ul>
+          <a href="https://wa.me/919840580550?text=Hi%20Mrs.Evergreen%2C%20I%20am%20interested%20in%20your%20Imitation%20Jewellery!" target="_blank" class="btn btn-outline" id="jewelleryWhatsapp">Ask About Jewellery</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY US ── -->
+  <section class="why-us">
+    <div class="container">
+      <div class="text-center mb-lg">
+        <p class="section-eyebrow">Why Choose Us</p>
+        <h2 class="section-title">The Mrs. Evergreen Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🌿</div>
+          <h4>Carefully Curated</h4>
+          <p>Every piece in our store is handpicked by our expert stylists to ensure premium quality and timeless appeal.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💬</div>
+          <h4>Personal Styling Help</h4>
+          <p>Not sure what to pick? WhatsApp us and our team will personally help you choose the perfect outfit.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🎁</div>
+          <h4>Gifting Options</h4>
+          <p>Beautiful gift wrapping and special occasion bundles available — make every celebration memorable.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🚀</div>
+          <h4>New Arrivals Weekly</h4>
+          <p>Fresh styles drop every week — follow us and never miss the latest trends in Indian and fusion fashion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info">
+        <p class="section-eyebrow">Get in Touch</p>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+        <p class="contact-desc">Have a question about our collections? Looking for something specific? Reach out to us anytime — we're always happy to help you find your perfect look.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:9840580550">9840580550</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">💬</span>
+            <div>
+              <strong>WhatsApp Chat</strong>
+              <a href="https://wa.me/919840580550" target="_blank">Chat with us directly</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🕐</span>
+            <div>
+              <strong>Hours</strong>
+              <span>Mon – Sat: 10:00 AM – 8:00 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <h3>Send Us a Message</h3>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 98XXXXXXXX" required />
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm interested in...</label>
+            <select id="interest" name="interest">
+              <option value="">Select a category</option>
+              <option>Sarees</option>
+              <option>Kurtis</option>
+              <option>Chudidars</option>
+              <option>Cord Sets</option>
+              <option>Western Wear</option>
+              <option>Exclusive Collections</option>
+              <option>Imitation Jewellery</option>
+              <option>Other / General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us what you're looking for..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary full-width" id="sendWhatsapp">Send via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-leaf">🌿</span>
+        <span class="logo-text">Mrs.<strong>Evergreen</strong></span>
+        <p>Your exclusive destination for women's fashion — from traditional elegance to modern chic.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Collections</h5>
+        <a href="#sarees">Sarees</a>
+        <a href="#kurtis">Kurtis</a>
+        <a href="#chudidars">Chudidars</a>
+        <a href="#cordsets">Cord Sets</a>
+        <a href="#western">Western Wear</a>
+        <a href="#exclusive">Exclusive Collections</a>
+        <a href="#jewellery">Jewellery</a>
+      </div>
+      <div class="footer-contact">
+        <h5>Contact Us</h5>
+        <p>📞 <a href="tel:9840580550">9840580550</a></p>
+        <p>💬 <a href="https://wa.me/919840580550" target="_blank">WhatsApp Chat</a></p>
+        <a href="https://wa.me/919840580550" target="_blank" class="btn btn-whatsapp mt-sm" id="footerWhatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.886a.75.75 0 00.918.918l6.03-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.72 9.72 0 01-4.92-1.336l-.352-.21-3.656.895.915-3.546-.228-.366A9.72 9.72 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Mrs. Evergreen. All rights reserved. | Designed with 🌿 for fashion lovers.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919840580550" target="_blank" class="whatsapp-float" id="whatsappFloat" title="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.886a.75.75 0 00.918.918l6.03-1.475A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.72 9.72 0 01-4.92-1.336l-.352-.21-3.656.895.915-3.546-.228-.366A9.72 9.72 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
 </body>
 </html>
